@@ -366,6 +366,32 @@ class quest9 extends page {
 	
 	function table(){
 		global $db;
+		$numberNine = 'SELECT universityName, grandTotl2011, totlLiabs2011, totlNetAssts, totlRevenue, revSum, nAsstsPSSum, liabSum, ((grandTotl2011+totlLiabs2011+totlNetAssts+totlRevenue+revSum+nAsstsPSSum+liabSum)/7) AS sum FROM numberNine ORDER BY sum DESC LIMIT 5';
+		echo '<table border="1"; cellpadding="10">';
+		echo '<tr><th>University Name</th><th>Total Enrolled</th><th>Total Liabilities</th><th>Total Net Assets</th><th>Total Revenue</th><th>Revenue Per Student</th><th>Net Assets Per Student</th><th>Liabilities Per Student</th><th>Total Average</th></tr>';
+		foreach($db->query($numberNine) as $row){
+		    echo '<tr><td>';
+		    echo $row['universityName'];
+		    echo '</td><td>';
+		    echo $row['grandTotl2011'];
+			echo '</td><td>';
+		    echo $row['totlLiabs2011'];
+			echo '</td><td>';
+		    echo $row['totlNetAssts'];
+			echo '</td><td>';
+		    echo $row['totlRevenue'];
+			echo '</td><td>';
+		    echo $row['revSum'];
+			echo '</td><td>';
+		    echo $row['nAsstsPSSum'];
+			echo '</td><td>';
+		    echo $row['liabSum'];
+			echo '</td><td>';
+		    echo $row['sum'];
+			echo '</td><tr>';
+		}
+		echo '</table>';
+		echo '<br />';
 	}
 }
 
